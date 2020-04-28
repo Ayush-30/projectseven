@@ -1,0 +1,55 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <title>GeekHub</title>
+  <link rel="icon" type="image/png" href="{% static 'image/geekhub.png' %}"/>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+.centerlog {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+}
+
+
+/* Set a style for all buttons */
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+</style>
+</head>
+<body>
+
+<h2><img src="{% static 'image/geekhub.png' %}" alt="Avatar" class="centerlog"></h2> <br><br><br>
+
+ {% if user.is_authenticated %}
+        <div>
+          <button onclick="location.href='{% url 'dashboard' %}'"
+                    style="margin-left: auto;margin-right: auto;width: 50%;display:block;top:0%;margin-bottom:0%">Dashboard</button><br><BR><BR>
+        </div>
+  {% else %}
+              <div>
+            <button onclick="location.href='{% url 'login' %}'"
+                    style="margin-left: auto;margin-right: auto;width: 50%;display:block;top:0%;margin-bottom:0%">Login</button><br><BR><BR>
+            <button onclick="location.href='{% url 'register' %}'"
+                    style="margin-left: auto;margin-right: auto;width: 50%;display:block;top:0%;margin-bottom:0%">Sign Up</button>
+              </div>
+  {% endif %}
